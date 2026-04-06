@@ -14,7 +14,8 @@
 ### Déploiement Vercel
 
 - Un workflow GitHub Actions sur **`interface`** déploie en production à chaque push : [`.github/workflows/vercel-deploy-interface.yml`](https://github.com/AnthonyNadjari/TOM-CO-TCG-BOT/blob/interface/.github/workflows/vercel-deploy-interface.yml) (secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`).
-- Dans le dashboard Vercel : **Project → Settings → Environments → Production branch**, régler la branche de production sur **`interface`** si ce n’est pas déjà fait. Ainsi, les pushes sur **`main`** ne réécrasent pas la prod avec la landing minimale.
+- **Builds Git ignorés pour `main`** : le projet Vercel est configuré avec une *Ignored Build Step* qui saute les déploiements déclenchés par des commits sur **`main`** (la prod n’est plus écrasée par la landing minimale). Les mises à jour prod viennent du workflow sur **`interface`**.
+- Optionnel : dans **Project → Settings → Environments**, vous pouvez aussi définir la **Production branch** sur **`interface`** pour l’aligner avec le flux réel.
 
 ---
 
