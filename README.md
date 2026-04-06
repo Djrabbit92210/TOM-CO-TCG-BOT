@@ -1,22 +1,31 @@
-# TOM-CO-TCG-BOT (`main`)
+# TOM-CO-TCG-BOT
 
-## Front statique (Vercel)
+## Branches
 
-Branche **légère** : page statique + build npm qui copie `public/index.html` vers `dist/`.
+**`main`** — point d’ancrage minimal (page statique légère + squelette Python backend). Ce n’est pas l’app produit.
 
-- **Application complète** : branche [`interface`](https://github.com/AnthonyNadjari/TOM-CO-TCG-BOT/tree/interface)
-- **Prod de l’app** : [tom-co-tcg-bot.vercel.app](https://tom-co-tcg-bot.vercel.app) (déployée via GitHub Actions sur `interface`)
+**`interface`** — **TCG Scalper Pro** : appli développée et déployée depuis cette branche.
 
-Cette config évite les déploiements Vercel « annulés » par une étape d’ignore et permet aux checks GitHub de passer.
+| | Lien |
+|---|------|
+| **App en production** | [tom-co-tcg-bot.vercel.app](https://tom-co-tcg-bot.vercel.app) |
+| **Code (interface)** | [GitHub — branche `interface`](https://github.com/AnthonyNadjari/TOM-CO-TCG-BOT/tree/interface) |
 
-## Backend Python (squelette)
+### Déploiement Vercel
 
-Arborescence cible pour l’orchestrateur, les bots, les scrapers, les adaptateurs par site, l’exécution Playwright, les comptes, le paiement, l’infra et la sécurité. Le paquet est défini dans `pyproject.toml` ; les modules sont importables depuis la racine du dépôt (`PYTHONPATH=.` ou `pip install -e .`).
+- Un workflow GitHub Actions sur **`interface`** déploie en production à chaque push : [`.github/workflows/vercel-deploy-interface.yml`](https://github.com/AnthonyNadjari/TOM-CO-TCG-BOT/blob/interface/.github/workflows/vercel-deploy-interface.yml) (secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`).
+- Dans le dashboard Vercel : **Project → Settings → Environments → Production branch**, régler la branche de production sur **`interface`** si ce n’est pas déjà fait. Ainsi, les pushes sur **`main`** ne réécrasent pas la prod avec la landing minimale.
+
+---
+
+## Backend Python (sur `main`)
+
+Squelette : orchestrateur, bots, scrapers, adaptateurs par site, exécution Playwright, comptes, paiement, infra, sécurité. Paquet : `pyproject.toml` (`pip install -e .` ou `PYTHONPATH=.`).
 
 ```
 orchestrator/   # bot_manager, scheduler, config_parser, state_manager
 bots/           # base_bot, worker, session_manager, strategy
-scrapers/       # base, api, browser, keyword_engine
+scrapers/       # base, api, browser, keyword_engine, product_match
 sites/          # base (SiteAdapter), pokemon_center/, amazon/, …
 execution/      # buyer, playwright_driver, cart, checkout
 accounts/       # account_manager, generators, cookie_store
@@ -27,8 +36,6 @@ config/         # settings.yaml, sites.yaml, limits.yaml
 utils/          # logger, retry, metrics
 tests/
 ```
-
-L’interface FastAPI / serveur peut vivre dans une autre branche ou un autre dépôt ; ce squelette est prêt à être branché dessus via `orchestrator/config_parser.py` et l’API.
 
 ### Tests
 
