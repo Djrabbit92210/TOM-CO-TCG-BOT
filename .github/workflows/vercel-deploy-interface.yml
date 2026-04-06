@@ -1,8 +1,15 @@
+# amondnet/vercel-action pins Vercel CLI 25.x which breaks with current APIs
+# ("Could not retrieve Project Settings"). Use latest CLI + env project binding.
+
 name: Deploy production (interface)
 
 on:
   push:
     branches: [interface]
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   deploy:
@@ -10,10 +17,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy to Vercel (production)
-        uses: amondnet/vercel-action@v25
+      - uses: actions/setup-node@v4
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Remove stale link (if any)
+        run: rm -rf .vercel
+
+      - name: Install Vercel CLI (latest)
+        run: npm install -g vercel@latest
+
+      # Remote build on Vercel (same idea as the old action, modern CLI)
+      - name: Deploy to production
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
