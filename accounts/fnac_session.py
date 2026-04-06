@@ -2,21 +2,63 @@
 
 from __future__ import annotations
 
+import importlib.util
+import sys
 import time
+import types
 from pathlib import Path
 
-from playwright.sync_api import Browser, sync_playwright
+from playwright.sync_api import Browser, BrowserContext, Page, sync_playwright
 
 from accounts.cookie_store import CookieStore
 from accounts.session_store import SessionStore
-from sites.fnac import config
-from sites.fnac.playwright_fnac import _accept_cookies, _new_context
+
+
+def _fnac_config_module() -> types.ModuleType:
+    """Load ``sites/fnac/config.py`` without importing ``sites.fnac`` (heavy ``__init__``)."""
+    name = "tom_co_fnac_config_runtime"
+    if name in sys.modules:
+        return sys.modules[name]
+    root = Path(__file__).resolve().parents[1]
+    path = root / "sites" / "fnac" / "config.py"
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise FileNotFoundError(f"Missing Fnac config at {path}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[name] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
+config = _fnac_config_module()
 
 _LAUNCH_ARGS = [
     "--disable-blink-features=AutomationControlled",
     "--no-sandbox",
     "--disable-setuid-sandbox",
 ]
+
+
+def _accept_cookies(page: Page) -> None:
+    btn = page.locator("button#onetrust-accept-btn-handler")
+    if btn.count() > 0:
+        try:
+            btn.click(timeout=5000)
+            time.sleep(0.5)
+        except Exception:
+            pass
+
+
+def _new_context(browser: Browser, user_agent: str) -> BrowserContext:
+    ctx = browser.new_context(
+        user_agent=user_agent,
+        locale="fr-FR",
+        ignore_https_errors=True,
+    )
+    ctx.set_extra_http_headers(
+        {"Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7"}
+    )
+    return ctx
 
 
 def capture_fnac_session_after_manual_login(
