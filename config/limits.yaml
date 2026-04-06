@@ -1,0 +1,4 @@
+# Default spend and per-product caps (orchestrator overrides).
+
+max_total_spend: null
+max_price_per_product: null
