@@ -14,3 +14,7 @@ Prod : push sur **`interface`** → [workflow Vercel](https://github.com/Anthony
 orchestrator/  bots/  scrapers/  sites/  execution/  accounts/
 payment/  infra/  security/  config/  utils/  tests/
 ```
+
+### Fnac (`sites/fnac/`)
+
+See **[docs/FNAC.md](docs/FNAC.md)** — add-to-cart, capture/analyze network traffic, watch mode, Akamai/Playwright notes.
