@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tom-co-tcg-bot"
+version = "0.0.1"
+description = "TCG monitoring and purchase automation (backend skeleton)"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "httpx>=0.27.0",
+  "httpx_socks>=0.9.0",
+  "beautifulsoup4>=4.12.0",
+  "playwright>=1.40.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+include = [
+  "orchestrator*",
+  "bots*",
+  "scrapers*",
+  "sites*",
+  "execution*",
+  "accounts*",
+  "payment*",
+  "infra*",
+  "security*",
+  "utils*",
+]
+
+[project.scripts]
+tomco-accounts = "accounts.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

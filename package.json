@@ -1,0 +1,7 @@
+{
+  "name": "tom-co-tcg-bot-main",
+  "private": true,
+  "scripts": {
+    "build": "node ./scripts/copy-static.mjs"
+  }
+}

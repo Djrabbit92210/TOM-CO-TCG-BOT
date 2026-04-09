@@ -1,0 +1,3 @@
+# Global defaults (paths, log level). Override per environment.
+
+log_level: INFO
