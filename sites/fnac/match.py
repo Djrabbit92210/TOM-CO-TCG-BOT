@@ -61,12 +61,18 @@ def listing_matches(
     k_ok = matches_keywords(title, keyword_groups) if keyword_groups else True
     n_ok = overlap_score(name_hint, title) >= min_score if name_hint.strip() else True
 
+    # Sécurité supplémentaire : évite les "faux positifs" sur les recherches Fnac
+    title_lower = title.lower()
+    important_keywords = ["titans", "attaque", "manga", "tome"]
+    # On accepte si au moins un des mots clés critiques est présent
+    has_critical = any(kw in title_lower for kw in important_keywords)
+
     if keyword_groups and name_hint.strip():
-        return k_ok and n_ok
+        return k_ok and n_ok and has_critical
     if keyword_groups:
-        return k_ok
+        return k_ok and has_critical
     if name_hint.strip():
-        return n_ok
+        return n_ok and has_critical
     return False
 
 

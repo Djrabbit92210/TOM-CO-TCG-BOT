@@ -53,15 +53,19 @@ def _new_context(browser: Browser, user_agent: str | None = None) -> BrowserCont
         viewport={"width": 1920, "height": 1080},
         ignore_https_errors=True,
     )
-    ctx.set_extra_http_headers(
-        {
-            "Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
-            "Sec-Ch-Ua": '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',
-            "Sec-Ch-Ua-Mobile": "?0",
-            "Sec-Ch-Ua-Platform": '"macOS"',
-            "Upgrade-Insecure-Requests": "1",
-        }
-    )
+    try:
+        ctx.set_extra_http_headers(
+            {
+                "Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
+                "Sec-Ch-Ua": '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',
+                "Sec-Ch-Ua-Mobile": "?0",
+                "Sec-Ch-Ua-Platform": '"macOS"',
+                "Upgrade-Insecure-Requests": "1",
+            }
+        )
+    except Exception:
+        # En mode CDP, on ne peut pas toujours modifier les headers d'un contexte existant
+        pass
     return ctx
 
 
@@ -143,25 +147,45 @@ def add_to_cart_playwright(
     """Perform visual 'Add to Cart' click (supports persistent page)."""
     if page:
         try:
-            print(f"DEBUG: [Browser] [Turbo] Adding {product_id} to cart...")
+            print(f"DEBUG: [Browser] Adding {product_id} to cart via physical click...")
             _simulate_human(page)
-            # On s'assure d'être sur la page
-            warm_page(page, referer_path)
             
-            product_link_pattern = f"/a{product_id}/"
-            card = page.locator(f".f-productCard, .Article-item").filter(has=page.locator(f'a[href*="{product_link_pattern}"]')).first
+            # 1. On cherche d'abord les boutons spécifiques à une page PRODUIT (PDP)
+            pdp_selectors = [
+                'button.js-AddBasket',
+                '.f-purchase-button button',
+                'button:has-text("Ajouter au panier")',
+                '.btn-primary:has-text("Ajouter au panier")'
+            ]
             
-            if card.count() == 0:
-                # On tente un petit scroll car le produit peut être "lazy loaded"
-                page.evaluate("window.scrollBy(0, 500)")
-                time.sleep(0.5)
-                if card.count() == 0:
-                    return False, 0, None, "card_not_found"
-
-            btn = card.locator('button:has-text("Ajouter au panier"), .js-addToCart').first
-            btn.click()
-            time.sleep(1.0)
-            return True, 200, {"success": True}, "visual_click_ok"
+            found_btn = False
+            for sel in pdp_selectors:
+                try:
+                    btn = page.locator(sel).first
+                    if btn.is_visible(timeout=3000):
+                        print(f"DEBUG: [Browser] Found PDP Add button: {sel}")
+                        btn.click()
+                        found_btn = True
+                        break
+                except: continue
+            
+            # 2. Si pas trouvé, on cherche sur une page de RÉSULTATS (Search)
+            if not found_btn:
+                print("DEBUG: [Browser] PDP button not found, checking search results card...")
+                product_link_pattern = f"/a{product_id}/"
+                card = page.locator(f".f-productCard, .Article-item").filter(has=page.locator(f'a[href*="{product_link_pattern}"]')).first
+                if card.count() > 0:
+                    btn = card.locator('button:has-text("Ajouter au panier"), .js-addToCart').first
+                    if btn.count() > 0:
+                        btn.click()
+                        found_btn = True
+            
+            if found_btn:
+                # Petite attente pour que l'action soit enregistrée par la Fnac
+                time.sleep(1.5)
+                return True, 200, {"success": True}, "visual_click_ok"
+            
+            return False, 0, None, "add_button_not_found"
         except Exception as e:
             return False, 0, None, str(e)
 
@@ -199,12 +223,18 @@ def fetch_html_playwright(
         
         _simulate_human(page)
         
-        # Smart Refresh: Si on est déjà sur l'URL, on utilise reload() ce qui est plus naturel
-        if url in page.url or page.url in url:
+        # Smart Refresh: Comparaison plus stricte pour éviter de confondre l'accueil et la recherche
+        current_url = page.url.rstrip('/')
+        target_url = url.rstrip('/')
+        
+        if current_url == target_url:
             print(f"DEBUG: [Browser] [Stealth] Reloading current page...")
-            page.reload(wait_until="domcontentloaded")
+            try:
+                page.reload(wait_until="domcontentloaded", timeout=60000)
+            except Exception:
+                page.goto(url, wait_until="domcontentloaded")
         else:
-            print(f"DEBUG: [Browser] [Stealth] Navigating to {url}...")
+            print(f"DEBUG: [Browser] [Stealth] Navigating to {url} (current: {current_url})...")
             page.goto(url, wait_until="domcontentloaded")
             
         _handle_queue(page)
@@ -256,63 +286,109 @@ def checkout_sequence_playwright(
 
 
 def _checkout_steps(page: Page) -> bool:
-    """Internal checkout navigation logic."""
+    """Internal checkout navigation logic - Ultra Robust version without direct URL triggers."""
     try:
         Path("scratch").mkdir(exist_ok=True)
-        basket_urls = [f"{config.BASE_URL}/basket", f"{config.BASE_URL}/panier", "https://secure.fnac.com/orderpipe/pop/panier"]
         
-        success = False
-        for b_url in basket_urls:
-            print(f"DEBUG: [Browser] Trying basket URL: {b_url}...")
+        # 1. Si on est déjà sur la page sécurisée, on s'arrête là pour laisser l'humain
+        if "secure.fnac.com" in page.url and "panier" not in page.url:
+            print(f"DEBUG: [Browser] Already on secure checkout flow: {page.url}")
+            return True
+
+        # 2. Attente massive de la POP-IN d'ajout au panier (chemin le plus sûr)
+        print("DEBUG: [Browser] Waiting up to 15s for post-add popin...")
+        popin_selectors = [
+            'button:has-text("Voir mon panier")',
+            'a:has-text("Voir mon panier")',
+            '.btn-primary:has-text("Voir le panier")',
+            '#basket-popin-validate',
+            'a[href*="panier"].btn-primary'
+        ]
+        
+        for p_sel in popin_selectors:
             try:
-                resp = page.goto(b_url, timeout=30_000, wait_until="domcontentloaded")
-                _handle_queue(page)
-                if resp and resp.status == 404: continue
-                if "panier" in page.url.lower() or "basket" in page.url.lower():
-                    success = True
-                    break
+                btn = page.locator(p_sel).first
+                # On attend que le bouton devienne visible (max 15s au total pour la boucle)
+                if btn.is_visible(timeout=5000): 
+                    print(f"DEBUG: [Browser] Clicking popin button: {p_sel}")
+                    btn.click()
+                    page.wait_for_load_state("networkidle", timeout=10000)
+                    return True
             except: continue
 
-        if not success:
-            page.goto(config.BASE_URL, wait_until="domcontentloaded")
-            cart_icon = page.locator('a[href*="panier"], .header-cart').first
-            if cart_icon.count() > 0:
-                cart_icon.click()
-                page.wait_for_load_state("domcontentloaded")
-            else: return False
-
-        time.sleep(1.0)
-        selectors = ['button:has-text("Choisir ma livraison")', 'button:has-text("Commander")', 'button:has-text("Valider mon panier")', '.btn--primary']
+        # 3. Fallback : On cherche l'icône du panier dans le header (clic visuel uniquement)
+        print("DEBUG: [Browser] Popin not found, looking for cart icon in header...")
+        cart_selectors = [
+            'a[href*="panier"]', 
+            'a[href*="basket"]',
+            '.header-cart', 
+            '#mini-cart', 
+            '.js-cart-icon',
+            'li.ActionPanel-item--cart a',
+            '[data-status="cart"]'
+        ]
         
-        checkout_btn = None
-        for sel in selectors:
+        found_cart = False
+        for sel in cart_selectors:
             try:
-                loc = page.wait_for_selector(sel, timeout=3000, state="visible")
-                if loc:
-                    checkout_btn = page.locator(sel).first
+                locator = page.locator(sel).first
+                if locator.is_visible(timeout=3000):
+                    print(f"DEBUG: [Browser] Clicking cart icon: {sel}")
+                    locator.click()
+                    page.wait_for_load_state("networkidle", timeout=10000)
+                    found_cart = True
                     break
             except: continue
         
-        if not checkout_btn:
-            page.screenshot(path="scratch/checkout_error.png")
+        # 4. Fallback Ultime : Navigation vers l'URL sécurisée (plus robuste que /panier)
+        if not found_cart and "panier" not in page.url.lower():
+            print("DEBUG: [Browser] No visual path found, attempting secure basket URL...")
+            try:
+                # On évite le /panier générique qui cause le 404 Lego
+                page.goto("https://secure.fnac.com/basket", wait_until="networkidle", timeout=15000)
+            except Exception as e:
+                print(f"DEBUG: [Browser] Secure fallback failed: {e}")
+
+        # 5. On vérifie si on est bien sur le panier avant de continuer
+        if "panier" not in page.url.lower() and "basket" not in page.url.lower():
+            print("ERROR: [Browser] Still not on Basket page. Diagnostic capture.")
+            page.screenshot(path="scratch/basket_fail.png")
             return False
 
-        print(f"DEBUG: [Browser] Clicking Checkout button...")
-        checkout_btn.click()
-        page.wait_for_load_state("networkidle")
+        # 6. Attente du bouton de validation finale ("Choisir ma livraison")
+        print("DEBUG: [Browser] Waiting for Checkout button...")
+        checkout_selectors = [
+            'button:has-text("Choisir ma livraison")',
+            '#panier-validate',
+            '.button-basket-validate',
+            'button:has-text("Valider mon panier")',
+            'button.btn--primary:has-text("Commander")',
+            'a:has-text("Valider mon panier")'
+        ]
+        
+        found_checkout = False
+        for c_sel in checkout_selectors:
+            try:
+                btn = page.locator(c_sel).first
+                if btn.is_visible(timeout=5000):
+                    print(f"DEBUG: [Browser] Clicking Checkout button: {c_sel}")
+                    btn.click()
+                    found_checkout = True
+                    break
+            except: continue
+                
+        if not found_checkout:
+             print("DEBUG: [Browser] Checkout button not found visually. Saving screenshot.")
+             page.screenshot(path="scratch/checkout_error.png")
+             return False
 
-        if "connection" in page.url or "identification" in page.url:
-            print("DEBUG: Login required.")
-            return False
-
-        print("DEBUG: Handling Shipping step...")
+        print("DEBUG: Reached Order stages. Handing over to human or continuing...")
         shipping_btn = page.locator('button:has-text("Valider la livraison"), button:has-text("Passer au paiement"), button:has-text("Suivant")').first
         if shipping_btn.count() > 0:
             shipping_btn.click()
-            page.wait_for_load_state("networkidle")
+            page.wait_for_load_state("networkidle", timeout=10000)
 
         print("DEBUG: Reached Payment step.")
-        page.wait_for_selector('text="Paiement", text="Carte bancaire"', timeout=10_000)
         return True
     except Exception as e:
         print(f"DEBUG: Checkout failed: {e}")

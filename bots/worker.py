@@ -20,16 +20,18 @@ class Worker(BaseBot):
         from infra.proxy_manager import ProxyManager
         self.proxy_manager = ProxyManager()
 
-        if self.site == "fnac" and "fnac_watch" in config:
+        if self.site == "fnac":
             from sites.fnac.monitor import FnacMonitor
             from infra.browser_manager import BrowserManager
             # On initialise un manager de navigateur persistant pour ce worker
+            logger.info(f"[Worker {self.worker_id}] Initializing persistent BrowserManager...")
             self.browser_manager = BrowserManager(
-                headless=False, # Pour qu'on puisse voir l'action
+                headless=False,
                 proxy_manager=self.proxy_manager
             )
+            watch_cfg = config.get("fnac_watch")
             self.monitor = FnacMonitor(
-                watch=config["fnac_watch"],
+                watch=watch_cfg,
                 browser_manager=self.browser_manager
             )
 
@@ -49,7 +51,11 @@ class Worker(BaseBot):
                         logger.warning(f"[Worker {self.worker_id}] SUCCESS! Product found and ready to buy.")
                         logger.warning(f"[Worker {self.worker_id}] Triggering purchase flow...")
                         # Turbo mode: use the snapshot already fetched
-                        await asyncio.to_thread(self.monitor.purchase_from_snapshot, snapshot)
+                        result = await asyncio.to_thread(self.monitor.purchase_from_snapshot, snapshot)
+                        if result and result.ok:
+                            logger.warning(f"[Worker {self.worker_id}] Purchase sequence complete. Stopping worker.")
+                            self._running = False
+                            break
                 else:
                     logger.info(f"[Worker {self.worker_id}] Checking stock for item ... (mocking {self.site})")
                     
@@ -63,7 +69,10 @@ class Worker(BaseBot):
                 logger.error(f"[Worker {self.worker_id}] Error in worker loop: {e}")
                 await asyncio.sleep(5)
                 
-        # Shutdown cleanup
+        # Shutdown cleanup - En mode Ghost, on ne ferme PAS si on a réussi la mission
         if hasattr(self, 'browser_manager'):
-            await asyncio.to_thread(self.browser_manager.stop)
+            if self._running: # Si on s'arrête suite à une erreur ou un Ctrl+C
+                await asyncio.to_thread(self.browser_manager.stop)
+            else:
+                logger.info(f"[Worker {self.worker_id}] SUCCESS: Leaving browser open for user interaction.")
         logger.info(f"[Worker {self.worker_id}] Shutdown complete.")

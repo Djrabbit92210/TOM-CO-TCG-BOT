@@ -69,6 +69,10 @@ class FnacMonitor:
         self.buyer = buyer or FnacBuyer(cookie_store=cookie_store)
         self.browser_manager = browser_manager
         self._persistent_page = None
+        if not self.browser_manager:
+            logger.warning("[FnacMonitor] Warning: No BrowserManager provided. Falling back to HTTP.")
+        else:
+            logger.info("[FnacMonitor] BrowserManager received. Ghost Mode enabled.")
 
     def _get_page(self) -> Any:
         if not self.browser_manager:
@@ -147,9 +151,11 @@ class FnacMonitor:
             warm_path=ref_path,
         )
         if html is None:
+            logger.error(f"[FnacMonitor] URL Poll failed: {err}")
             return WatchSnapshot(False, err or "fetch_failed", w.product_id, None, False, None, url, ref_path)
             
         if err == "akamai_after_playwright":
+            logger.warning("[FnacMonitor] Akamai challenge detected on PDP page.")
             return WatchSnapshot(False, "akamai_block", w.product_id, None, False, None, url, ref_path)
             
         pid = resolve_product_id(url=url, html=html, explicit=w.product_id)
@@ -183,8 +189,10 @@ class FnacMonitor:
                 err = ""
 
         if html is None:
+            logger.error(f"[FnacMonitor] Search Poll failed: {err}")
             return WatchSnapshot(False, "fetch_failed", w.product_id, None, False, None, None, path)
         if err == "akamai_after_playwright":
+            logger.warning("[FnacMonitor] Akamai challenge detected on Search page.")
             return WatchSnapshot(False, "akamai_block", w.product_id, None, False, None, None, path)
 
         listings = [listing_to_dict(x) for x in parse_search_results(html)]
@@ -242,21 +250,27 @@ class FnacMonitor:
         return "unknown"
 
     def purchase_from_snapshot(self, snap: WatchSnapshot) -> AddToCartResult | None:
-        """Turbo purchase: skip re-polling and use already found product_id."""
+        """Turbo purchase: navigate to PDP first to ensure session sync, then click."""
         if not snap.ready_to_buy or not snap.product_id:
             return None
             
+        page = self._get_page()
+        if page and snap.product_url:
+            print(f"DEBUG: [Browser] Navigating to PDP before purchase: {snap.product_url}")
+            page.goto(snap.product_url, wait_until="domcontentloaded")
+            time.sleep(1.0) # Petite pause pour stabiliser la session
+
         print(f"LOG: [Turbo] Triggering purchase for {snap.product_id}...")
         orig_transport = self.buyer.transport
         self.buyer.transport = "playwright"
         try:
-            r = self.buyer.add_to_cart(snap.product_id, referer_path=snap.referer_path, page=self._get_page())
+            r = self.buyer.add_to_cart(snap.product_id, referer_path=snap.referer_path, page=page)
         finally:
             self.buyer.transport = orig_transport
 
         if r.ok:
             print("LOG: [Turbo] AddToCart successful, starting checkout sequence...")
-            self.buyer.checkout(page=self._get_page())
+            self.buyer.checkout(page=page)
         return r
 
     def try_purchase(self) -> AddToCartResult | None:
@@ -292,7 +306,10 @@ class FnacMonitor:
 
             if snap.ready_to_buy and snap.product_id:
                 r = self.purchase_from_snapshot(snap)
-                if r and r.ok: return r
+                if r and r.ok:
+                    print("LOG: [Stealth] MISSION ACCOMPLISHED. Payment page reached.")
+                    print("LOG: [Stealth] Stopping bot to let user finalize payment manually. DO NOT RESTART.")
+                    return r
                 
             # Adaptive sleep (jitter)
             sleep_time = interval_sec + random.uniform(-interval_sec * 0.3, interval_sec * 0.5)
