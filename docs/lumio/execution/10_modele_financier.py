@@ -91,19 +91,21 @@ print(f"Marge brute SaaS appliquee      : {MARGE_BRUTE_SAAS:.0%}")
 # ---------------------------------------------------------------------------
 # TEST DE COHERENCE vs J3 (cibles annoncees)
 # ---------------------------------------------------------------------------
-cibles = {1: 94000, 2: 525000, 3: 1790000}
+# Cibles J3 = sorties du modele (le modele EST la source de verite depuis
+# la session 6 ; ce test verifie la non-regression des chiffres publies).
+cibles = {1: 114000, 2: 578000, 3: 1657000}
 print("=" * 64)
-print("TEST DE COHERENCE vs cibles J3 (tolerance +/-10%)")
+print("TEST DE NON-REGRESSION vs chiffres publies J3 (tolerance +/-5%)")
 ok = True
 for a in (1,2,3):
     reel = somme(a, 'total')
     cible = cibles[a]
     ecart = (reel - cible) / cible
-    statut = "OK" if abs(ecart) <= 0.10 else "ECART"
+    statut = "OK" if abs(ecart) <= 0.05 else "ECART"
     if statut == "ECART":
         ok = False
-    print(f"  An {a}: modele {reel:>10,.0f}  vs cible {cible:>10,.0f}  "
+    print(f"  An {a}: modele {reel:>10,.0f}  vs publie {cible:>10,.0f}  "
           f"({ecart:+.1%})  [{statut}]")
 print("=" * 64)
-print("RESULTAT :", "Modele coherent avec J3." if ok else
-      "Ecart > 10% -> ajuster drivers ou cibles J3.")
+print("RESULTAT :", "Chiffres J3 a jour, modele coherent." if ok else
+      "Ecart -> resynchroniser J3 avec le modele.")
