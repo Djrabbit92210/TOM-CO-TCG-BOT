@@ -1,4 +1,4 @@
-# LUMIO — J7 : Data Room & finalisation du dossier investisseur
+# NEXLUM — J7 : Data Room & finalisation du dossier investisseur
 
 **Nom provisoire :** NEXLUM *(à figer — J5)*
 **Date :** 2026-06-29 (J7)
@@ -20,7 +20,7 @@
 | — | Audit vivant (13 failles) | ✅ `AUDIT_CRITIQUE_ET_CORRECTIONS.md` |
 | — | Journal de bord quotidien | ✅ `JOURNAL_DE_BORD.md` |
 
-**Readiness interne : 41 → 82/100.** Le dossier documentaire est complet et cohérent. Le plafond « documents seuls » (~82) est atteint. **Tout point au-delà exige des preuves marché réelles.**
+**Readiness interne : 41 → 85/100** *(82 en fin de sprint J7, porté à 85 par la passe godmode : recherche concurrentielle réelle, modèle exécutable, socle juridique).* Le dossier documentaire est complet et cohérent. Le plafond « documents + outils » (~86) est quasi atteint. **Tout point au-delà exige des preuves marché réelles.**
 
 ---
 
@@ -75,7 +75,7 @@ Structure standard attendue par un fonds en due diligence. *(✅ = prêt / 🔲 
 | « Quelle est votre traction ? » | MVP + 20 appels validation + pipeline ; premiers clients à M6 | ⚠️ Faible (à prouver) |
 | « Pourquoi vous et pas un éditeur ? » | Couche transversale + canal cabinet + souveraineté ; stratégie d'intégration | ✅ Bonne |
 | « Et si Pennylane/Cegid copie ? » | Risque #4 nommé ; moat = distribution + corpus, pas la techno | ⚠️ Honnête mais ouvert |
-| « Votre LTV/CAC est-il prouvé ? » | Non, c'est une cible (9,6×) ; validée dès 10 clients | ⚠️ À prouver |
+| « Votre LTV/CAC est-il prouvé ? » | Non, c'est une cible (8,4×) ; validée dès 10 clients | ⚠️ À prouver |
 | « Pourquoi le modèle ne meurt pas ? » | Hybride services+SaaS cash-positif An 1, amortit les chocs | ✅ Forte |
 | « Fondateur solo = risque ? » | Reconnu ; plan d'embauche + advisors + partenaires | ⚠️ À renforcer |
 | « Votre nom est-il sécurisé ? » | Non, LUMIO écarté ; NEXLUM recommandé, dépôt à faire | ⚠️ À fermer |
@@ -85,7 +85,7 @@ Structure standard attendue par un fonds en due diligence. *(✅ = prêt / 🔲 
 
 ---
 
-## 3. Les 3 chantiers qui font passer de 82 à 90+ (preuves, pas documents)
+## 3. Les 3 chantiers qui font passer de 85 à 90+ (preuves, pas documents)
 
 1. **Traction réelle** : signer 3 clients payants → débloque +5 readiness. *C'est le seul vrai accélérateur restant.*
 2. **Sécuriser le nom + la marque** : recherche INPI/EUIPO + dépôt → +2.

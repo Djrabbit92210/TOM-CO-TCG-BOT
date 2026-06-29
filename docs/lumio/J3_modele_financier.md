@@ -1,6 +1,6 @@
-# LUMIO — J3 : Modèle financier P&L 36 mois
+# NEXLUM — J3 : Modèle financier P&L 36 mois
 
-**Nom provisoire :** LUMIO *(à figer en J5)*
+**Nom de travail :** NEXLUM *(retenu — dépôt INPI/EUIPO à lancer)*
 **Niveau :** présentable à un comité Série A / BPI France / business angel
 **Date :** 2026-06-29 (J3)
 **Fichier d'hypothèses modifiable :** `J3_modele_financier_hypotheses.csv` — *change une variable, le P&L se recalcule. Aucun chiffre n'est figé en dur dans le récit.*
@@ -46,42 +46,28 @@ Cohérent avec les corrections de l'audit (`AUDIT_CRITIQUE_ET_CORRECTIONS.md`) :
 
 ## 2. Compte de résultat — vue trimestrielle (36 mois)
 
-*Tous les montants en k€. Construits depuis le CSV d'hypothèses.*
+*Tous les montants en k€. **Issus du modèle exécutable** `execution/10_modele_financier.py` (reproductibles).*
 
-### Année 1 — Beachhead scale-ups (le conseil finance tout)
+### CA total par trimestre
 
-| | T1 | T2 | T3 | T4 | **An 1** |
+| Année | T1 | T2 | T3 | T4 | **Total** |
 |---|---|---|---|---|---|
-| Conseil | 8 | 16 | 24 | 32 | **80** |
-| SaaS (MRR fin de T) | 0 | 1,5/mo | 3/mo | 8/mo | **14** |
-| Benchmarks | 0 | 0 | 0 | 0 | **0** |
-| **CA total** | 8 | 20 | 28 | 38 | **94** |
-| Charges | 14 | 17 | 19 | 20 | **70** |
-| **EBITDA** | -6 | +3 | +9 | +18 | **+24** |
+| **An 1** | 8 | 26 | 35 | 45 | **114** |
+| **An 2** | 82 | 122 | 165 | 209 | **578** |
+| **An 3** | 312 | 379 | 447 | 520 | **1 657** |
 
-*Note : T1 légèrement négatif (rampe commerciale) ; absorbé par le pont Malt. Cash-positif dès T2.*
+### Récapitulatif annuel (CA, charges, EBITDA)
 
-### Année 2 — Scale SaaS + ouverture canal cabinets
+| | An 1 | An 2 | An 3 |
+|---|---|---|---|
+| Conseil (FLUX 1) | 80 | 248 | 500 |
+| SaaS (FLUX 2) | 34 | 317 | 911 |
+| Benchmarks (FLUX 3) | 0 | 13 | 246 |
+| **CA total** | **114** | **578** | **1 657** |
+| Charges | 70 | 470 | 1 500 |
+| **EBITDA** | **+44** | **+108** | **+157** |
 
-| | T5 | T6 | T7 | T8 | **An 2** |
-|---|---|---|---|---|---|
-| Conseil | 50 | 60 | 65 | 75 | **250** |
-| SaaS | 35 | 55 | 70 | 85 | **245** |
-| Benchmarks | 0 | 5 | 10 | 15 | **30** |
-| **CA total** | 85 | 120 | 145 | 175 | **525** |
-| Charges | 95 | 115 | 125 | 135 | **470** |
-| **EBITDA** | -10 | +5 | +20 | +40 | **+55** |
-
-### Année 3 — Passage à l'échelle
-
-| | T9 | T10 | T11 | T12 | **An 3** |
-|---|---|---|---|---|---|
-| Conseil | 105 | 115 | 125 | 135 | **480** |
-| SaaS | 200 | 245 | 290 | 325 | **1 060** |
-| Benchmarks | 45 | 55 | 70 | 80 | **250** |
-| **CA total** | 350 | 415 | 485 | 540 | **1 790** |
-| Charges | 320 | 360 | 395 | 425 | **1 500** |
-| **EBITDA** | +30 | +55 | +90 | +115 | **+290** |
+> **Note de lecture :** les charges sont modélisées en montant annuel (lissé). Les premiers trimestres de chaque année peuvent être en déficit ponctuel (rampe du CA face à des charges réparties), absorbé par la trésorerie générée et le pont Malt en An 1. La rentabilité est appréciée au niveau annuel : **EBITDA positif chaque année.**
 
 ---
 
@@ -117,14 +103,14 @@ Cohérent avec les corrections de l'audit (`AUDIT_CRITIQUE_ET_CORRECTIONS.md`) :
 
 > **Correction d'intégrité (godmode) :** la marge brute SaaS de 80 % était trop optimiste pour un produit IA (coûts d'inférence). Vérification faite : les marges « AI-first » vont de 20 à 60 % en moyenne. NEXLUM vise **70 %** — défendable car (1) Mistral est l'un des modèles les moins chers du marché, (2) la majorité de la valeur vient de l'orchestration no-code et du conseil, pas de l'inférence brute. Le pricing (Diagnostic 2 500 € / Sprint 6 000 € / SaaS 290 €/mois) est par ailleurs **confirmé en plein marché** : agences IA — offres d'entrée 1 500-5 000 $, core 5 000-25 000 $, retainers 500-5 000 $/mois. *Source : [benchmarks productized AI](https://pharallax.ai/guides/productized-consulting-examples/).*
 
-> ⚠️ **Honnêteté Série A :** ces unit economics sont des **cibles à valider par la traction réelle**, pas des faits. Elles seront recalibrées dès les 10 premiers clients SaaS. Le LTV/CAC de 9,6× est plausible vu le canal prescription, mais un fonds le challengera — d'où la nécessité des preuves J7+.
+> ⚠️ **Honnêteté Série A :** ces unit economics sont des **cibles à valider par la traction réelle**, pas des faits. Elles seront recalibrées dès les 10 premiers clients SaaS. Le LTV/CAC de 8,4× est plausible vu le canal prescription, mais un fonds le challengera — d'où la nécessité des preuves J7+.
 
 ---
 
 ## 5. Trésorerie & financement
 
 ### Scénario A — Bootstrap (base case, SANS levée)
-- LUMIO reste **cash-positif dès le T2** grâce au conseil.
+- NEXLUM reste **cash-positif dès le T2** grâce au conseil.
 - **Aucun capital externe nécessaire** pour survivre. Trésorerie cumulée toujours positive.
 - Croissance plus lente mais contrôle total, zéro dilution.
 - **Levier non dilutif activé :** Bourse French Tech BPI (**30 k€**, jusqu'à 90 k€ si qualification deeptech) + crédit d'impôt innovation. *Source : [Bpifrance](https://www.bpifrance.fr/catalogue-offres/bourse-french-tech-emergence).*
@@ -132,7 +118,7 @@ Cohérent avec les corrections de l'audit (`AUDIT_CRITIQUE_ET_CORRECTIONS.md`) :
 ### Scénario B — Financé (upside, levée pré-seed ~600 k€ au M9)
 - Embauche accélérée (sales + dev dès M9 au lieu de M13).
 - Burn planifié An 2, retour à l'EBITDA positif An 3.
-- **CA An 3 projeté ~2,8 M€** (vs 1,79 M€ en bootstrap).
+- **CA An 3 projeté ~2,8 M€** (vs 1,66 M€ en bootstrap).
 - Usage : 60 % équipe go-to-market, 25 % produit, 15 % conformité/légal.
 
 **Message investisseur :** « Nous n'avons pas *besoin* de votre argent pour survivre — nous le voulons pour aller **3× plus vite** sur une fenêtre réglementaire (IA Act) qui se referme. » C'est la position de négociation la plus forte possible.

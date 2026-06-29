@@ -1,4 +1,4 @@
-# LUMIO — J6 : Pitch Deck 15 slides (niveau Série A / pré-seed)
+# NEXLUM — J6 : Pitch Deck 15 slides (niveau Série A / pré-seed)
 
 **Nom provisoire :** NEXLUM *(recommandé, à figer — voir J5)*
 **Date :** 2026-06-29 (J6)

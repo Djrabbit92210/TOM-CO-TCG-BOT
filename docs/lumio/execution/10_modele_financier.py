@@ -81,6 +81,15 @@ for champ, label in [('conseil','Conseil (FLUX1)'), ('saas','SaaS (FLUX2)'),
     print(f"{label:18}" + "".join(f"{v:>14,.0f}" for v in vals))
 
 print("-" * 64)
+print("VUE TRIMESTRIELLE (CA total, kEUR)")
+for a in (1, 2, 3):
+    q = []
+    for t in range(4):
+        mois_t = [a*12 - 12 + t*3 + i for i in (1, 2, 3)]  # mois 1-based
+        ca = sum(l['total'] for l in lignes if l['mois'] in mois_t)
+        q.append(ca/1000)
+    print(f"  An {a}: T1={q[0]:5.0f}  T2={q[1]:5.0f}  T3={q[2]:5.0f}  T4={q[3]:5.0f}")
+print("-" * 64)
 clients_fin = [l['clients'] for l in lignes if l['mois'] in (6,12,24,36)]
 print("Clients SaaS fin M6/M12/M24/M36 :",
       ", ".join(f"{c:.0f}" for c in clients_fin))

@@ -1,6 +1,6 @@
-# LUMIO — J4 : Go-to-Market & Personas acheteurs
+# NEXLUM — J4 : Go-to-Market & Personas acheteurs
 
-**Nom provisoire :** LUMIO *(à figer en J5)*
+**Nom de travail :** NEXLUM *(retenu — dépôt INPI/EUIPO à lancer)*
 **Date :** 2026-06-29 (J4)
 **Fondé sur :** le séquencement validé en audit — **scale-ups d'abord (beachhead), cabinets ensuite (expansion)**.
 
@@ -68,7 +68,7 @@ GTM en 3 phases, une motion claire par phase, cohérente avec la contrainte « f
 2. **Upsell naturel :** Sprint d'automatisation 6 000 € → livre les automatisations → abonnement SaaS pour les maintenir.
 3. **Acquisition zéro-budget :**
    - LinkedIn : 3 posts/semaine, cas d'usage concrets chiffrés (objectif KPI : 500 abonnés M3, 2 000 M6).
-   - Transition Malt : convertir les missions Malt génériques en missions IA, puis en clients LUMIO (sortie de Malt M6).
+   - Transition Malt : convertir les missions Malt génériques en missions IA, puis en clients NEXLUM (sortie de Malt M6).
    - Communautés (Slack/Discord startups, France Digitale).
 4. **Preuve sociale :** chaque mission = 1 témoignage écrit + 1 cas chiffré (le carburant de la phase 2).
 
