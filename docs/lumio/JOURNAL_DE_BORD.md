@@ -73,4 +73,29 @@
 
 ---
 
-<!-- Les entrées suivantes (semaine 2) seront ajoutées ici, une par jour. -->
+## 2026-06-29 — Session 3 (Kit d'exécution semaine 2)
+
+### Ce qui a été produit
+- **`execution/01_script_appels_validation.md`** : trame complète des 20 appels (douleur + Van Westendorp 4 questions + feuille de saisie).
+- **`execution/02_onepager_methode_S4.md`** : one-pager commercial vendable de la méthode S4 + grille de prix.
+- **`execution/03_templates_prospection.md`** : critères de ciblage 20 scale-ups, templates LinkedIn/email, cadence de relance, réponses aux objections.
+
+### Pourquoi (auto-amélioration tenue)
+J'avais noté en session 2 qu'il fallait « passer du document à l'outil utilisable ». Fait : ces 3 fichiers sont directement actionnables par le fondateur dès demain, sans retravail.
+
+### Points positifs
+- Le projet a maintenant des **outils opérationnels**, pas seulement une stratégie.
+- Le script d'appels alimente directement le pricing (`J3` CSV) et le ROI du pitch (`J6`).
+
+### Points négatifs / limite honnête
+- Ces outils ont besoin d'**inputs du fondateur** pour devenir réels : profil/bio, 20 noms de prospects, décision sur le nom, accès agenda. Je ne peux pas les inventer à sa place sans risquer de fabriquer du faux.
+- **Readiness inchangé (82/100)** : ces outils préparent l'exécution mais ne constituent pas encore de la traction. Le compteur ne bouge qu'avec un client réel signé. Je refuse de gonfler le score.
+
+### Auto-amélioration
+- Prochaine vraie valeur = des décisions du fondateur (nom, profil, prospects) + de l'exécution terrain. Mon rôle bascule de « producteur de documents » à « copilote d'exécution » : je dois maintenant poser les bonnes questions et réagir aux résultats réels, plutôt que produire davantage de théorie.
+
+### Readiness du jour : **82 / 100** (stable — outils prêts ; la traction se gagne sur le terrain)
+
+---
+
+<!-- Les entrées suivantes seront ajoutées ici, une par jour. -->
