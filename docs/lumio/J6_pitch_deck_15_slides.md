@@ -66,8 +66,8 @@
 - **Message clé :** on présente des preuves et des jalons datés, pas des rêves.
 
 ## Slide 11 — Projections financières
-- CA : **94 k€ (An 1) → 525 k€ (An 2) → 1,79 M€ (An 3)**.
-- **EBITDA positif dès l'An 1** (+24 k€). ARR de sortie ~1,27 M€.
+- CA : **114 k€ (An 1) → 578 k€ (An 2) → 1,66 M€ (An 3)** *(modèle exécutable, reproductible)*.
+- **EBITDA positif dès l'An 1** (+44 k€). ARR de sortie ~1,28 M€.
 - **Message clé :** rare en pré-seed — un modèle rentable sans capital.
 
 ## Slide 12 — Conformité & souveraineté (l'angle unique EU)

@@ -16,7 +16,7 @@
 |---|---|---|
 | **TAM** (Europe, marché IA-pour-entreprises adressable PME) | **≈ 38 Md€** d'ici 2030 | Dérivé IDC / McKinsey / Eurostat (cf. §3) |
 | **SAM** (France + Benelux, cabinets + scale-ups, services + SaaS) | **≈ 2,4 Md€** | Calcul bottom-up (cf. §4) |
-| **SOM** (capturable réaliste à 36 mois) | **≈ 6,5 M€ ARR potentiel** ; objectif prudent **1,8 M€** | Calcul bottom-up (cf. §5) |
+| **SOM** (capturable réaliste à 36 mois) | **~1,66 M€ CA An 3** (modèle exécutable) ; plafond ~6,5 M€ | Modèle `execution/10` (cf. §5) |
 | PME dans l'UE | **33,5 millions d'entreprises**, dont 99,8 % de PME | [Eurostat 2024](https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20241025-1) |
 | Adoption IA — petites entreprises UE | **11,2 %** (vs 41,2 % grandes) | [Eurostat, déc. 2025](https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2) |
 | Fenêtre réglementaire IA Act (obligations haut-risque) | **2 août 2026** (déféré possible déc. 2027) | [EU AI Act timeline](https://artificialintelligenceact.eu/implementation-timeline/) |
@@ -123,18 +123,18 @@ Chaque cabinet (Cible A) donne accès à **20–50 PME clientes**. 21 000 cabine
 
 | Source de revenu | An 1 | An 2 | An 3 |
 |---|---|---|---|
-| FLUX 1 — Conseil/audit/formation | 60 k€ | 220 k€ | 450 k€ |
-| FLUX 2 — SaaS PME + cabinets (MRR) | 0 → 18 k€ ARR | 240 k€ ARR | 1 100 k€ ARR |
-| FLUX 3 — Data licensing / partenariats | 0 | 0 | 250 k€ |
-| **Total ARR/revenu annualisé** | **~80 k€** | **~460 k€** | **~1,8 M€** |
+| FLUX 1 — Conseil/audit/formation | 80 k€ | 248 k€ | 500 k€ |
+| FLUX 2 — SaaS PME + cabinets | 34 k€ | 317 k€ | 911 k€ |
+| FLUX 3 — Benchmarks anonymisés *(corrigé, ex-« data licensing »)* | 0 | 13 k€ | 246 k€ |
+| **Total CA annualisé** | **~114 k€** | **~578 k€** | **~1,66 M€** |
 
-*Aligné sur les KPIs déjà posés : MRR SaaS 1 500 € au mois 6 → trajectoire crédible vers 1,1 M€ ARR an 3.*
+> **Chiffres mis à jour** par le modèle financier exécutable (`execution/10_modele_financier.py`, cf. J3) qui remplace l'estimation manuelle initiale (80/460/1 800 k€). ARR de sortie M36 ≈ 1,28 M€. Aligné sur le KPI MRR SaaS 1 500 € au mois 6.
 
 ### 5.2 Scénario haut (exécution réussie + effet prescription)
 
 Si LUMIO convertit **300 cabinets** (1,4 % de la Cible A) à 6 000 €/an + **400 scale-ups** à 9 000 €/an → **~5,4 M€** ; avec FLUX 3, **≈ 6,5 M€ ARR potentiel** à 36 mois.
 
-> **SOM retenu : objectif prudent 1,8 M€ ARR à 36 mois ; plafond d'exécution ~6,5 M€.** Représente **< 0,1 % du SAM** → cible volontairement sous-dimensionnée = crédibilité maximale devant un comité (on ne promet pas la lune, on prouve qu'on en gratte une fraction infime).
+> **SOM retenu : ~1,66 M€ CA An 3 (ARR de sortie ~1,28 M€), modèle exécutable ; plafond d'exécution ~6,5 M€.** Représente **< 0,1 % du SAM** → cible volontairement sous-dimensionnée = crédibilité maximale devant un comité (on ne promet pas la lune, on prouve qu'on en gratte une fraction infime).
 
 ---
 
@@ -149,7 +149,9 @@ Si LUMIO convertit **300 cabinets** (1,4 % de la Cible A) à 6 000 €/an + **40
 | **Agences IA / freelances** | Multitude fragmentée | Agilité, prix | Pas de méthodologie propriétaire, pas de récurrence, pas de conformité, pas de marque |
 | **Pure players conformité IA Act** | Quelques start-ups émergentes | Focus réglementaire | Mono-produit, ne couvrent pas l'intégration opérationnelle ni la double cible |
 
-**Vide de marché identifié (la niche monopolisable — thèse Thiel) :** *aucun acteur ne combine simultanément* (1) accompagnement opérationnel abordable PME, (2) souveraineté/Mistral + RGPD, (3) conformité IA Act intégrée, (4) modèle récurrent SaaS, (5) canal prescripteur cabinets. LUMIO est positionné à l'intersection exacte de ces cinq axes.
+**Vide de marché identifié (la niche monopolisable — thèse Thiel) :** *aucun acteur ne combine simultanément* (1) accompagnement opérationnel abordable PME, (2) souveraineté/Mistral + RGPD, (3) readiness IA Act intégré, (4) modèle récurrent SaaS, (5) canal prescripteur cabinets. NEXLUM est positionné à l'intersection exacte de ces cinq axes.
+
+> ⚠️ **Repositionnement clé (faille #14, validé par recherche réelle) :** la **production comptable IA est déjà saturée** (Cegid Loop/PIA, Pennylane 300 000+ users, Sage Copilot, Dext). NEXLUM **n'y va pas**. Son terrain est le **transversal non-comptable** (juridique, RH, comms, ops, marketing), l'**activation des PME clientes** en marque blanche, et le **readiness IA Act** — là où ces éditeurs ne sont pas. Stratégie d'**intégration** aux éditeurs, pas de confrontation. Détail : `execution/06_intelligence_concurrentielle.md`.
 
 ---
 

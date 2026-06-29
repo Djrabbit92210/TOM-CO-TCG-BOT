@@ -11,21 +11,26 @@
 
 ## 0. Synthèse pour décideur pressé
 
+> **⚙️ Chiffres recalculés par le modèle exécutable** `execution/10_modele_financier.py` (corrige les estimations manuelles initiales — boucle test→correction). Le script est la **source de vérité** ; les valeurs ci-dessous en sont issues et reproductibles.
+
 | | Année 1 | Année 2 | Année 3 |
 |---|---|---|---|
-| **Chiffre d'affaires** | **94 k€** | **525 k€** | **1 790 k€** |
-| dont Conseil (FLUX 1) | 80 k€ | 250 k€ | 480 k€ |
-| dont SaaS (FLUX 2) | 14 k€ | 245 k€ | 1 060 k€ |
-| dont Benchmarks (FLUX 3) | 0 | 30 k€ | 250 k€ |
+| **Chiffre d'affaires** | **114 k€** | **578 k€** | **1 657 k€** |
+| dont Conseil (FLUX 1) | 80 k€ | 248 k€ | 500 k€ |
+| dont SaaS (FLUX 2) | 34 k€ | 317 k€ | 911 k€ |
+| dont Benchmarks (FLUX 3) | 0 | 13 k€ | 246 k€ |
 | **Charges totales** | 70 k€ | 470 k€ | 1 500 k€ |
-| **EBITDA** | **+24 k€** | **+55 k€** | **+290 k€** |
-| Marge EBITDA | 26 % | 10 % | 16 % |
-| **ARR de sortie (run-rate M36)** | — | — | **~1,27 M€** |
+| **EBITDA** | **+44 k€** | **+108 k€** | **+157 k€** |
+| Marge EBITDA | 38 % | 19 % | 9 % |
+| Clients SaaS (fin d'année) | 26 | 141 | 332 |
+| **ARR de sortie (run-rate M36)** | — | — | **~1,28 M€** |
 | Trésorerie cumulée (sans levée) | positive | positive | positive |
 
-**Thèse financière en une phrase :** LUMIO est un modèle **hybride services→SaaS capital-efficient qui atteint le seuil de rentabilité dès l'année 1** ; le conseil (FLUX 1) autofinance la construction du SaaS (FLUX 2), supprimant la dépendance à une levée — ce qui fait de tout capital levé un **accélérateur, pas une bouée de sauvetage**.
+**Thèse financière en une phrase :** NEXLUM est un modèle **hybride services→SaaS capital-efficient qui atteint le seuil de rentabilité dès l'année 1** ; le conseil (FLUX 1) autofinance la construction du SaaS (FLUX 2), supprimant la dépendance à une levée — ce qui fait de tout capital levé un **accélérateur, pas une bouée de sauvetage**.
 
-**Gain readiness : +3 (71 → 74).** Un P&L cash-positif sans capital est l'argument le plus rare et le plus respecté en pré-seed.
+> **Note d'intégrité (test du modèle) :** les estimations manuelles initiales (94/525/1 790 k€) ont été **invalidées par le modèle exécutable** : la version manuelle sous-estimait le revenu SaaS cumulé de l'An 1 (14 k€ → 34 k€ réels, car le MRR s'accumule sur 7 mois) et surestimait l'An 3. Les chiffres ci-dessus sont désormais **reproductibles** : `python3 execution/10_modele_financier.py`. La marge EBITDA An 3 (9 %) reflète un réinvestissement agressif (charges 1,5 M€) ; la réduire augmenterait mécaniquement l'EBITDA.
+
+**Gain readiness : +3 (71 → 74), +1 supplémentaire pour la reproductibilité du modèle.** Un P&L cash-positif sans capital, *et recalculable par n'importe qui*, est l'argument le plus rare et le plus respecté en pré-seed.
 
 ---
 

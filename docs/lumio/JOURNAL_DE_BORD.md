@@ -159,4 +159,31 @@ Concurrents compta IA (Cegid/Pennylane/Sage/Dext/Agiris), pricing Mistral, marge
 
 ---
 
+## 2026-06-29 — Session 6 (Modèle exécutable + harmonisation)
+
+### Test exécuté → erreur trouvée → corrigée
+- J'ai codé le P&L en Python (`execution/10_modele_financier.py`) et l'ai **fait tourner**. Le test de cohérence a **invalidé mes estimations manuelles** : An 1 réel 114 k€ vs cible 94 k€ (+21 %), car le SaaS s'accumule sur 7 mois (le manuel sous-estimait à 14 k€, réel 34 k€).
+- **Correction :** le script devient la **source de vérité**. J3, J2, J6 mis à jour avec les chiffres reproductibles : **CA 114 / 578 / 1 657 k€, EBITDA +44 / +108 / +157 k€, ARR sortie ~1,28 M€**.
+
+### Harmonisation (cohérence inter-documents)
+- J2 : SOM, tableau de revenus et section concurrence alignés sur le repositionnement #14 (hors compta-prod) et le modèle exécutable. « LUMIO » → « NEXLUM » dans les passages touchés.
+- FLUX 3 « data licensing » → « benchmarks anonymisés » corrigé jusque dans J2.
+
+### Points positifs
+- Le modèle est désormais **reproductible par n'importe qui** (`python3 ...`) — argument de crédibilité fort en due diligence.
+- Le dossier est cohérent de bout en bout : mêmes chiffres dans J2, J3, J6.
+- La boucle « test → faille → correction » a fonctionné sur du quantitatif, pas seulement du narratif.
+
+### Points négatifs / honnêteté
+- L'EBITDA An 3 tombe à 9 % (vs 16 % annoncé avant) car les charges de réinvestissement (1,5 M€) sont fixes et le CA An 3 est plus prudent (1,66 vs 1,79 M€). C'est plus honnête, mais moins flatteur — j'assume.
+- Il reste des occurrences de « LUMIO » dans J3/J4/J6/J7 (corps de texte) non encore renommées en NEXLUM : harmonisation cosmétique à finir lors du passage au deck visuel.
+
+### Auto-amélioration
+- Tester en exécutant (code qui tourne) est supérieur à tester en relisant. À généraliser : tout ce qui peut être vérifié par exécution doit l'être.
+- Prochaine valeur réelle : soit le deck visuel, soit le dossier BPI non-dilutif — mais le readiness est à ~85/86, plafond documentaire. Je continue de refuser de le gonfler.
+
+### Readiness du jour : **85 / 100** (modèle fiabilisé et reproductible ; plafond documentaire confirmé)
+
+---
+
 <!-- Les entrées suivantes seront ajoutées ici, une par jour. -->

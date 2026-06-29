@@ -33,6 +33,7 @@ Dossier stratégique & investisseur — sprint 7 jours. Tous les documents sont 
 | [`07_guide_build_mvp.md`](./execution/07_guide_build_mvp.md) | **Stack no-code souverain, chiffré, buildable** |
 | [`08_socle_juridique_rgpd_ia_act.md`](./execution/08_socle_juridique_rgpd_ia_act.md) | **RGPD + IA Act + contrats** |
 | [`09_copy_landing_page.md`](./execution/09_copy_landing_page.md) | Copy de landing page prête à publier |
+| [`10_modele_financier.py`](./execution/10_modele_financier.py) | **Modèle financier exécutable** — `python3 10_modele_financier.py` |
 
 ## État du projet (honnête)
 
