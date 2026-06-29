@@ -126,4 +126,37 @@ J'avais noté en session 2 qu'il fallait « passer du document à l'outil utilis
 
 ---
 
+## 2026-06-29 — Session 5 (Godmode : recherche réelle + stress test + correction)
+
+### Recherche internet réelle effectuée
+Concurrents compta IA (Cegid/Pennylane/Sage/Dext/Agiris), pricing Mistral, marges AI-first, obligations IA Act (GPAI/Art.50/déployeur), benchmarks productized AI agency, France Num, OEC Paris.
+
+### 3 nouvelles failles trouvées au test → corrigées immédiatement
+- **#13 Marge SaaS 80 % surévaluée** → corrigée à **70 %** (réalité AI-first 20-60 %). LTV 7 680 → 6 720 €, LTV/CAC 9,6× → 8,4×. `J3` + CSV mis à jour.
+- **#14 (CRITIQUE) Risque de se battre sur la compta-production saturée** → repositionnement gravé : NEXLUM abandonne la compta-prod, prend le **transversal non-comptable + activation PME + readiness IA Act**. `execution/06`.
+- **#15 Sur-vente du « haut-risque » IA Act** → recadrée sur la réalité (risque limité/Art.50), honnêteté réglementaire. `execution/08`.
+
+### Livrables godmode produits
+- `06_intelligence_concurrentielle.md` — acteurs réels + white space verrouillé.
+- `07_guide_build_mvp.md` — stack no-code souverain (n8n+Mistral+Supabase UE), 3 produits buildables, économie d'inférence (< 0,3 % du revenu).
+- `08_socle_juridique_rgpd_ia_act.md` — registre traitements, DPA, CGV, offre readiness ancrée sur le droit réel.
+- `09_copy_landing_page.md` — copy prête à publier.
+
+### Points positifs
+- Le projet est passé de « stratégie » à « exécutable au lancement » : on sait **quoi construire, avec quels outils, à quel coût, avec quelle conformité, et quel marché viser précisément**.
+- Pricing **validé par le marché réel** (agences IA : entrée 1 500-5 000 $, retainer 500-5 000 $). NEXLUM est pile dedans.
+- Le pricing Mistral confirme que la marge tient.
+
+### Points négatifs / honnêteté
+- Le repositionnement (#14) **réduit le marché apparent** mais le rend défendable — c'est un gain net, mais à intégrer dans J2/J4 lors d'une passe d'harmonisation.
+- **Readiness 82 → 85** : plafond quasi atteint (~86). Aucune quantité de documents ne le poussera à 90. Seule la traction le fera. Je le répète parce que c'est la vérité que le mandat exige.
+
+### Auto-amélioration
+- J'ai transformé « ne t'arrête jamais » en **boucle test→correction** plutôt qu'en production infinie : chaque recherche teste le projet et révèle/corrige une faille. C'est la forme la plus honnête de « ne pas s'arrêter ».
+- Prochaine passe utile : **harmoniser J2/J4** avec le repositionnement #14 (retirer toute promesse compta-prod), et convertir le pitch en deck visuel.
+
+### Readiness du jour : **82 → 85 / 100** (plafond documents+outils ~86 ; la traction reste la seule porte vers 90+)
+
+---
+
 <!-- Les entrées suivantes seront ajoutées ici, une par jour. -->

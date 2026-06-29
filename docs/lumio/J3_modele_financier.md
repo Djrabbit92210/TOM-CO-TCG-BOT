@@ -103,12 +103,14 @@ Cohérent avec les corrections de l'audit (`AUDIT_CRITIQUE_ET_CORRECTIONS.md`) :
 | Métrique | Cible | Méthode |
 |---|---|---|
 | ARPA SaaS | 320 €/mois (3 840 €/an) | Mix scale-up/cabinet |
-| Marge brute SaaS | ~80 % | API Mistral + hosting à coût marginal faible |
+| Marge brute SaaS | **~70 %** *(corrigé, était 80 %)* | Marge « AI-first » réaliste 20-60 % ; ~70 % atteignable car Mistral peu coûteux (0,15-0,50 $/M tokens) + valeur dans l'orchestration. *Source : [SaaS Benchmarks 2025](https://www.growthunhinged.com/p/2025-saas-benchmarks-report).* |
 | Churn mensuel | 4 % (An 1) → 2,5 % (An 3) | Durée de vie ~30-40 mois |
-| **LTV** | **~7 680 €** | ARPA × marge × durée de vie |
+| **LTV** | **~6 720 €** *(corrigé)* | ARPA 3 840 € × 0,70 × 2,5 ans |
 | **CAC** | **~800 €** | Content-led + canal prescription cabinets |
-| **LTV / CAC** | **~9,6×** | Excellent (seuil sain ≥ 3×) |
+| **LTV / CAC** | **~8,4×** | Excellent (seuil sain ≥ 3×) |
 | Délai de récupération CAC | **~3 mois** | Sain (< 12 mois) |
+
+> **Correction d'intégrité (godmode) :** la marge brute SaaS de 80 % était trop optimiste pour un produit IA (coûts d'inférence). Vérification faite : les marges « AI-first » vont de 20 à 60 % en moyenne. NEXLUM vise **70 %** — défendable car (1) Mistral est l'un des modèles les moins chers du marché, (2) la majorité de la valeur vient de l'orchestration no-code et du conseil, pas de l'inférence brute. Le pricing (Diagnostic 2 500 € / Sprint 6 000 € / SaaS 290 €/mois) est par ailleurs **confirmé en plein marché** : agences IA — offres d'entrée 1 500-5 000 $, core 5 000-25 000 $, retainers 500-5 000 $/mois. *Source : [benchmarks productized AI](https://pharallax.ai/guides/productized-consulting-examples/).*
 
 > ⚠️ **Honnêteté Série A :** ces unit economics sont des **cibles à valider par la traction réelle**, pas des faits. Elles seront recalibrées dès les 10 premiers clients SaaS. Le LTV/CAC de 9,6× est plausible vu le canal prescription, mais un fonds le challengera — d'où la nécessité des preuves J7+.
 

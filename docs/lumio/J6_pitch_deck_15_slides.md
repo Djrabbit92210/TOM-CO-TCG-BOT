@@ -47,7 +47,7 @@
 
 ## Slide 7 — Modèle économique (3 flux)
 - FLUX 1 Conseil (immédiat, finance la survie) → FLUX 2 SaaS (mois 6, scalable) → FLUX 3 Benchmarks anonymisés (mois 18, stratégique).
-- ARPA SaaS 320 €/mois, marge brute ~80 %, **LTV/CAC ~9,6× (cible)**.
+- ARPA SaaS 320 €/mois, marge brute ~70 %, **LTV/CAC ~8,4× (cible)**.
 - **Message clé :** le conseil autofinance la construction du SaaS → capital-efficient.
 
 ## Slide 8 — Go-to-market

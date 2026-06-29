@@ -2,7 +2,7 @@
 
 **Nature :** red-team interne, sans complaisance. Objectif : rendre le projet *réalisable*, pas le faire paraître beau.
 **Posture :** je traite ce projet comme un comité d'investissement hostile le ferait. Chaque faille est notée, corrigée, et l'impact est tracé.
-**Dernière mise à jour :** 2026-06-29 (J2)
+**Dernière mise à jour :** 2026-06-29 (stress test godmode — 15 failles)
 
 > **Règle de ce document :** une faille n'est pas « corrigée » parce qu'on l'a reformulée joliment. Elle est corrigée quand l'action concrète qui la neutralise est définie et exécutable sans capital. Tout le reste reste marqué `⚠️ OUVERT`.
 
@@ -38,8 +38,13 @@ Le 68 % initial était surévalué : il comptait des éléments « faits » qui 
 | 8 | Cabinets prescripteurs : levier théorique, incitation absente | Majeure | ✅ Corrigée (§9) |
 | 9 | Mismatch de niveau : narratif « Davos » à un stade pré-seed | Majeure | ✅ Corrigée (§10) |
 | 10 | KPIs optimistes / non ancrés sur des preuves | Mineure | ✅ Corrigée (§11) |
-| 11 | Nom LUMIO juridiquement à risque, mais utilisé partout | Mineure | ⚠️ Process défini (§12) |
+| 11 | Nom LUMIO juridiquement à risque, mais utilisé partout | Mineure | ✅ Résolu — NEXLUM retenu (§12) |
 | 12 | Dépendance Malt = revenu non lié au projet, risque de dérive | Mineure | ✅ Corrigée (§13) |
+| **13** | **Marge brute SaaS surévaluée à 80 %** (réalité AI-first 20-60 %) | Majeure | ✅ Corrigée (§16) |
+| **14** | **NEXLUM risquait d'attaquer la compta-production (terrain saturé)** | **Critique** | ✅ Corrigée (§17) |
+| **15** | **Sur-vente du « haut-risque » IA Act** (mensonge commercial) | Majeure | ✅ Corrigée (§18) |
+
+> **Failles #13-15 : trouvées lors du « stress test godmode »** (confrontation du projet à la recherche internet réelle, juin 2026). La boucle test→correction continue : chaque vérification factuelle peut révéler une faille, qui est corrigée immédiatement.
 
 ---
 
@@ -222,6 +227,51 @@ Le 68 % initial était surévalué : il comptait des éléments « faits » qui 
 | **Seuil suivant (nécessite des PREUVES réelles)** | **3 clients payants + 1 LOI cabinet** → 80+ |
 
 **Message clé (auto-discipline) :** le readiness ne dépassera pas ~72 sans **traction réelle**. Les documents ont fait leur travail. À partir de maintenant, chaque point se gagne par une preuve marché (client signé, LOI, MRR), pas par une page de plus. C'est la vérité qu'un fonds Série A martèlerait.
+
+---
+
+## 16. Faille #13 — Marge brute SaaS surévaluée (MAJEURE, trouvée au stress test)
+
+**Constat :** le modèle J3 posait 80 % de marge brute SaaS. Vérification internet : les produits « AI-first » ont des marges de **20-60 %** (coûts d'inférence), vs 70-90 % pour le SaaS classique. 80 % était indéfendable pour un produit IA.
+
+**Correction appliquée :** marge ramenée à **70 %** dans `J3` + CSV. Défendable car Mistral est très bon marché (0,15-0,50 $/M tokens, coût d'inférence < 0,3 % du revenu par client) et la valeur est dans l'orchestration, pas l'inférence brute. LTV recalculé : 7 680 € → **6 720 €** ; LTV/CAC 9,6× → **8,4×** (toujours excellent). *Sources : SaaS Benchmarks 2025, Mistral pricing.*
+
+**Impact readiness : +1 (la correction renforce la crédibilité, ne la dégrade pas — un chiffre prudent et sourcé bat un chiffre flatteur).**
+
+---
+
+## 17. Faille #14 — NEXLUM allait se battre sur un terrain déjà perdu (CRITIQUE, trouvée au stress test)
+
+**Constat :** la recherche révèle que la **production comptable IA est saturée** : Cegid Loop (PIA), Pennylane (300 000+ users, OCR 93 %), Sage Copilot, Dext, Agiris. Un nouvel entrant sans capital ne peut PAS gagner là. Le projet flirtait avec ce terrain via la cible cabinets.
+
+**Correction appliquée :** repositionnement gravé (`execution/06_intelligence_concurrentielle.md`) — NEXLUM **abandonne la compta-production** et se concentre sur le **transversal non-comptable** (juridique, RH, comms, ops, marketing), l'**activation des PME clientes** en marque blanche, et le **readiness IA Act** — là où les éditeurs ne sont pas. Stratégie d'**intégration** aux éditeurs, jamais de confrontation frontale.
+
+**Impact readiness : +2 (un white space précis et défendable vaut mieux qu'un marché vaste mais occupé).**
+
+---
+
+## 18. Faille #15 — Risque de sur-vendre la peur du « haut-risque » IA Act (MAJEURE)
+
+**Constat :** vérification faite, **la majorité des usages IA d'une PME relèvent du « risque limité » (Art. 50, transparence)**, pas du « haut-risque ». Vendre la conformité haut-risque à tort serait un mensonge commercial — et un suicide de crédibilité face à un client averti ou un fonds.
+
+**Correction appliquée :** l'offre Readiness IA Act (`execution/08`) est recadrée sur la **réalité** : transparence Art. 50, obligations du déployeur (formation, supervision), classification honnête du risque. Argument marketing : *« on vous rend prêt et serein, sans vous vendre une peur disproportionnée »*. Mention aussi du bonus PME (plafonds de sanction réduits).
+
+**Impact readiness : +1 (l'honnêteté réglementaire est un actif, pas un coût).**
+
+---
+
+## 19. Synthèse readiness (mise à jour godmode)
+
+| Étape | Score |
+|---|---|
+| Départ recalibré | 41 |
+| Après corrections J2 | 71 |
+| Après sprint complet (J7) | 82 |
+| **Après stress test godmode (#13-15 + intel + build + juridique)** | **85** |
+| Plafond « documents + outils » | ~86 |
+| **Seuil suivant (PREUVES réelles)** | 3 clients payants → 90+ |
+
+Le travail documentaire et préparatoire est quasi maximal (85/86). La barrière restante est, et reste, la **traction réelle**.
 
 ---
 

@@ -18,14 +18,27 @@ Dossier stratégique & investisseur — sprint 7 jours. Tous les documents sont 
 | [`J5_differenciation_IP_marque.md`](./J5_differenciation_IP_marque.md) | Différenciation 5 axes, méthodologie « S4 », décision marque |
 | [`J6_pitch_deck_15_slides.md`](./J6_pitch_deck_15_slides.md) | Script du pitch deck 15 slides |
 | [`J7_data_room_dossier_investisseur.md`](./J7_data_room_dossier_investisseur.md) | Index data room, checklist DD, verdict final |
-| [`AUDIT_CRITIQUE_ET_CORRECTIONS.md`](./AUDIT_CRITIQUE_ET_CORRECTIONS.md) | **Audit red-team — 13 failles identifiées & corrigées** |
+| [`AUDIT_CRITIQUE_ET_CORRECTIONS.md`](./AUDIT_CRITIQUE_ET_CORRECTIONS.md) | **Audit red-team — 15 failles identifiées & corrigées** |
 | [`JOURNAL_DE_BORD.md`](./JOURNAL_DE_BORD.md) | **Journal quotidien — modifs, points +/–, auto-amélioration** |
+
+### Dossier `execution/` (actionnable au lancement)
+| Fichier | Contenu |
+|---|---|
+| [`01_script_appels_validation.md`](./execution/01_script_appels_validation.md) | Trame des 20 appels (Van Westendorp + douleur) |
+| [`02_onepager_methode_S4.md`](./execution/02_onepager_methode_S4.md) | One-pager commercial vendable |
+| [`03_templates_prospection.md`](./execution/03_templates_prospection.md) | Ciblage + templates LinkedIn/email + objections |
+| [`04_modele_bio_fondateur.md`](./execution/04_modele_bio_fondateur.md) | Gabarit bio fondateur |
+| [`05_plan_action_90_jours.md`](./execution/05_plan_action_90_jours.md) | Plan d'exécution semaine par semaine |
+| [`06_intelligence_concurrentielle.md`](./execution/06_intelligence_concurrentielle.md) | **Concurrents réels + repositionnement** |
+| [`07_guide_build_mvp.md`](./execution/07_guide_build_mvp.md) | **Stack no-code souverain, chiffré, buildable** |
+| [`08_socle_juridique_rgpd_ia_act.md`](./execution/08_socle_juridique_rgpd_ia_act.md) | **RGPD + IA Act + contrats** |
+| [`09_copy_landing_page.md`](./execution/09_copy_landing_page.md) | Copy de landing page prête à publier |
 
 ## État du projet (honnête)
 
-- **Readiness interne : 82/100** (plafond « documents seuls »).
-- **Solide :** thèse de marché sourcée, modèle rentable An 1, différenciation défendable, risques nommés.
-- **À gagner sur le terrain (pas dans un doc) :** traction réelle (3 clients payants), nom de marque sécurisé (INPI/EUIPO), renforcement de l'équipe.
+- **Readiness interne : 85/100** (plafond « documents + outils » ~86).
+- **Solide :** thèse de marché sourcée, modèle rentable An 1 (marge corrigée 70 %), différenciation défendable et **repositionnée** (hors compta-production saturée), MVP buildable, socle juridique posé.
+- **À gagner sur le terrain (pas dans un doc) :** traction réelle (3 clients payants), nom de marque déposé (INPI/EUIPO), renforcement de l'équipe.
 
 ## Règles de ce dossier
 1. Données chiffrées vérifiables uniquement (Eurostat, INSEE, McKinsey, IDC, OCDE, BPI France, CNOEC).
