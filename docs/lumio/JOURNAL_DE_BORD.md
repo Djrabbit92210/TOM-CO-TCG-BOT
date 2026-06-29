@@ -38,4 +38,39 @@
 
 ---
 
-<!-- Les entrées suivantes (J3, J4, …) seront ajoutées ici, une par jour. -->
+## 2026-06-29 — Session 2 (J3 → J7, sprint complété)
+
+### Ce qui a été produit / modifié
+- **J3 — Modèle financier** : `J3_modele_financier.md` + `J3_modele_financier_hypotheses.csv` (variables isolées et modifiables). P&L 36 mois cash-positif dès l'An 1 (CA 94k/525k/1 790k €, EBITDA +24/+55/+290k), unit economics, 2 scénarios (bootstrap / levée 600k), sensibilité.
+- **J4 — GTM + personas** : 3 phases (beachhead scale-ups → moteur → échelle cabinets), 3 personas, pricing Van Westendorp, canal cabinet = moat de distribution.
+- **J5 — Différenciation/IP/marque** : matrice 5 axes, méthodologie propriétaire « S4 » (Scan-Ship-Scale-Secure), et **décision marque**.
+- **J6 — Pitch deck** : 15 slides scriptées, ton pré-seed honnête.
+- **J7 — Data room** : index DD, checklist des 8 questions de fonds, plan de répétition, verdict final.
+
+### Corrections d'erreurs effectuées cette session (vérification obligatoire)
+- ❗ **Nom LUMIO ÉCARTÉ** : vérification web → marque déposée US (#7986758) + plusieurs sociétés IA actives **dans le même secteur** (legal AI, ops AI). AIVIO, VELOAI, OPERAI également pris/risqués. **Recommandation : NEXLUM** (à confirmer INPI/EUIPO). Faille #11 passée de « process défini » à « décision argumentée ».
+- ✅ **Nombre de cabinets corrigé** : « 21 000-22 000 » approximatif → **~20 000 cabinets / 21 288 sociétés / 22 685 experts-comptables** (CNOEC vérifié).
+- ✅ **Financement ancré** : BPI Bourse French Tech 30 k€ (jusqu'à 90 k€ deeptech) vérifié → plan de financement réaliste.
+
+### Points positifs
+- Le dossier est **complet, cohérent et inter-référencé** (chaque doc cite les autres).
+- Le modèle financier est **modifiable**, pas figé (auto-amélioration J2→J3 tenue).
+- **Toutes les faiblesses sont nommées avant le fonds** (anti-fragilité en due diligence).
+- Readiness 41 → **82/100** (plafond « documents seuls »).
+
+### Points négatifs / risques ouverts (honnêteté)
+- ❗ **Zéro traction prouvée** — condition absolue pour lever ; aucun document ne la remplace.
+- ❗ **Nom non encore sécurisé** (recherche INPI/EUIPO formelle requise).
+- ❗ **Fondateur solo** = risque que les fonds pénalisent le plus (slide 13 faible).
+- Le dossier n'est **pas** « prêt pour Davos » : ce niveau exige une traction à 7 chiffres (18-36 mois). Le prétendre serait une faille en soi — je le dis clairement.
+
+### Auto-amélioration (comment je fais mieux ensuite)
+- J'ai tenu l'engagement « livrables modifiables » (CSV). Prochain palier : **convertir le narratif en artefacts utilisables** (slides Canva réelles, modèle financier en tableur live).
+- Je dois **résister à la tentation de gonfler le readiness** : il plafonne à 82 et je l'assume. Mentir sur l'avancement serait trahir le mandat « pas le droit à l'erreur ».
+- La vraie valeur ajoutée passe désormais du **document** à l'**exécution** (clients, marque, équipe). Je dois orienter mes prochaines réponses vers des actions concrètes (listes de prospects, scripts d'appel, modèles de contrat), pas plus de théorie.
+
+### Readiness du jour : **71 → 82 / 100** (plafond documents atteint ; la suite se gagne sur le terrain)
+
+---
+
+<!-- Les entrées suivantes (semaine 2) seront ajoutées ici, une par jour. -->
