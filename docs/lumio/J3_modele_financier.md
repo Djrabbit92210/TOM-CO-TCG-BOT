@@ -113,7 +113,7 @@ Cohérent avec les corrections de l'audit (`AUDIT_CRITIQUE_ET_CORRECTIONS.md`) :
 - NEXLUM reste **cash-positif dès le T2** grâce au conseil.
 - **Aucun capital externe nécessaire** pour survivre. Trésorerie cumulée toujours positive.
 - Croissance plus lente mais contrôle total, zéro dilution.
-- **Levier non dilutif activé :** Bourse French Tech BPI (**30 k€**, jusqu'à 90 k€ si qualification deeptech) + crédit d'impôt innovation. *Source : [Bpifrance](https://www.bpifrance.fr/catalogue-offres/bourse-french-tech-emergence).*
+- **Levier non dilutif activé :** Bourse French Tech BPI (**jusqu'à 50 k€** en classique, jusqu'à 90 k€ si qualification deeptech Emergence) + crédit d'impôt innovation. Dossier pré-rédigé : `execution/11_dossier_bpi_french_tech.md`. *Source : [Bpifrance](https://www.bpifrance.fr/catalogue-offres/bourse-french-tech-emergence).*
 
 ### Scénario B — Financé (upside, levée pré-seed ~600 k€ au M9)
 - Embauche accélérée (sales + dev dès M9 au lieu de M13).

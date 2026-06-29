@@ -83,7 +83,7 @@
 - ⚠️ *Slide la plus faible aujourd'hui — un fondateur solo est un risque. À renforcer (advisor, co-fondateur technique ?).*
 
 ## Slide 14 — La demande (Ask)
-- **Scénario A (bootstrap) :** pas de levée nécessaire ; subvention BPI Bourse French Tech (30 k€, jusqu'à 90 k€ deeptech) + CII.
+- **Scénario A (bootstrap) :** pas de levée nécessaire ; subvention BPI Bourse French Tech (jusqu'à 50 k€, 90 k€ si deeptech) + CII.
 - **Scénario B (accélération) :** **pré-seed ~600 k€** → 3× plus vite sur la fenêtre IA Act. Usage : 60 % GTM, 25 % produit, 15 % conformité.
 - **Message clé :** « Nous n'avons pas besoin de votre argent pour survivre — nous le voulons pour aller plus vite. »
 

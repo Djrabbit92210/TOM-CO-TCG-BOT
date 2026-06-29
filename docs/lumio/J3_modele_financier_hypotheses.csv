@@ -46,4 +46,4 @@ cac_blended,800,EUR,Canal content + prescription cabinets
 ltv_saas_cible,6720,EUR,CORRIGE - ARPA 3840 x 0.70 x 2.5 ans
 # --- FINANCEMENT (scenario finance optionnel) ---
 montant_levee_preseed,600000,EUR,Optionnel - accelere l embauche
-bpi_bourse_french_tech,30000,EUR,Subvention non dilutive (jusqu a 90k si deeptech)
+bpi_bourse_french_tech,50000,EUR,CORRIGE - plafond classique 50k (70pct du budget) ; jusqu a 90k si deeptech Emergence

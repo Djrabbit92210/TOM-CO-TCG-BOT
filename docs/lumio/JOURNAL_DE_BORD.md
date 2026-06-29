@@ -186,4 +186,28 @@ Concurrents compta IA (Cegid/Pennylane/Sage/Dext/Agiris), pricing Mistral, marge
 
 ---
 
+## 2026-06-29 — Session 7 (Dossier BPI non-dilutif)
+
+### Ce qui a été produit
+- **`execution/11_dossier_bpi_french_tech.md`** : dossier Bourse French Tech pré-rempli, structuré selon les vrais critères BPI (équipe, innovation, programme, marché, impact), avec budget de maturation technique et plan sur 12 mois.
+
+### Recherche & correction
+- Vérifié le dispositif réel : plafond classique **50 k€** (70 % du budget, depuis janv. 2025), Emergence deeptech jusqu'à 90 k€. **Correction** de la mention « 30 k€ » dans J3, J6 et le CSV.
+- Cadrage clé : la BPI finance le **technique/stratégique**, **pas** le commercial/communication → le dossier met en avant le programme de développement (couche multi-modèles souveraine, module IA Act), pas le GTM.
+
+### Points positifs
+- Le projet a maintenant un **chemin de financement non-dilutif concret et conforme**, prêt à compléter et soumettre une fois la société créée.
+- Cohérence : le dossier s'appuie sur les chiffres déjà fiabilisés (J2/J3 modèle exécutable).
+
+### Points négatifs / honnêteté
+- L'éligibilité **Emergence deeptech (90 k€) n'est pas acquise** : NEXLUM est orchestration/no-code ; seul le volet « couche d'abstraction multi-modèles souveraine » a un vrai contenu techno. Par prudence, viser la **BFT classique (50 k€)**.
+- Le dossier reste **bloqué sur 2 pré-requis** : société créée (< 1 an) et équipe complétée. Je ne peux pas les produire à la place du fondateur.
+
+### Auto-amélioration
+- J'ai systématiquement relié chaque nouveau livrable aux critères réels de l'évaluateur (ici BPI) plutôt qu'à une structure générique — c'est ce qui rend un dossier « finançable » et pas seulement « complet ».
+
+### Readiness du jour : **85 / 100** (financement non-dilutif préparé ; pré-requis société/équipe restent côté fondateur)
+
+---
+
 <!-- Les entrées suivantes seront ajoutées ici, une par jour. -->
