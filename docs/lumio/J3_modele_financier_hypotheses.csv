@@ -1,0 +1,49 @@
+variable,valeur,unite,commentaire_source
+# === HYPOTHESES MODIFIABLES — change une valeur, le P&L se recalcule ===
+# --- FLUX 1 : Conseil productise (3 offres a perimetre fixe) ---
+prix_diagnostic_ia_360,2500,EUR,Offre 1 - ticket fixe
+prix_sprint_automatisation,6000,EUR,Offre 2 - ticket fixe
+prix_readiness_ia_act,3500,EUR,Offre 3 - ticket fixe
+ticket_moyen_conseil,4000,EUR,Moyenne ponderee des 3 offres
+missions_conseil_an1,20,nb,Beachhead scale-ups
+missions_conseil_an2,62,nb,Productise + semi-delegue
+missions_conseil_an3,120,nb,Equipe conseil constituee
+# --- FLUX 2 : SaaS abonnement ---
+prix_saas_scaleup,290,EUR/mois,Plan PME/scale-up
+prix_saas_cabinet,490,EUR/mois,Plan cabinet (+ marque blanche)
+arpa_saas_blended,320,EUR/mois,Moyenne ponderee scale-up/cabinet
+clients_saas_fin_m6,5,nb,MRR cible 1500 EUR au mois 6 (KPI valide)
+clients_saas_fin_m12,28,nb,Fin annee 1
+clients_saas_fin_m24,135,nb,Fin annee 2
+clients_saas_fin_m36,330,nb,Fin annee 3 -> ARR ~1.27M EUR
+churn_mensuel_an1,4.0,%,Eleve au debut (a ameliorer)
+churn_mensuel_an3,2.5,%,Retention amelioree
+revenue_share_cabinet,25,%,Marge reversee au cabinet prescripteur
+# --- FLUX 3 : Benchmarks anonymises (PAS de data brute) ---
+flux3_demarrage,18,mois,Lancement apres masse critique de cas
+flux3_revenu_an2,30000,EUR,Partiel (demarre M18)
+flux3_revenu_an3,250000,EUR,Rapports sectoriels + partenariats editeurs
+# --- COUTS ---
+cout_outils_infra_an1,3000,EUR,Stack no-code + API Mistral (<150 EUR/mois)
+cout_outils_infra_an2,12000,EUR,Montee en charge
+cout_outils_infra_an3,24000,EUR,Infra + API a l echelle
+remuneration_fondateur_an1,30000,EUR,Pont via marge conseil + Malt (sortie Malt M6)
+remuneration_fondateur_an2,42000,EUR,
+remuneration_fondateur_an3,55000,EUR,
+nb_recrutements_an1,0,nb,Solo + alternant
+nb_recrutements_an2,3,nb,1 dev/ops + 1 sales + 1 alternant
+nb_recrutements_an3,4,nb,Equipe etoffee
+cout_charge_employe_moyen,50000,EUR,Salaire charge moyen (hors fondateur)
+budget_marketing_an1,4000,EUR,Content-led LinkedIn (low cost)
+budget_marketing_an2,25000,EUR,
+budget_marketing_an3,60000,EUR,
+budget_legal_partenariats_an1,5000,EUR,Avocat partenaire IA Act + admin
+budget_legal_partenariats_an2,10000,EUR,
+budget_legal_partenariats_an3,18000,EUR,
+# --- UNIT ECONOMICS (cibles a valider) ---
+marge_brute_saas,70,%,CORRIGE (etait 80) - marge AI-first realiste 20-60pct, ~70 viable car Mistral peu couteux + orchestration ; source SaaS Benchmarks 2025
+cac_blended,800,EUR,Canal content + prescription cabinets
+ltv_saas_cible,6720,EUR,CORRIGE - ARPA 3840 x 0.70 x 2.5 ans
+# --- FINANCEMENT (scenario finance optionnel) ---
+montant_levee_preseed,600000,EUR,Optionnel - accelere l embauche
+bpi_bourse_french_tech,50000,EUR,CORRIGE - plafond classique 50k (70pct du budget) ; jusqu a 90k si deeptech Emergence
