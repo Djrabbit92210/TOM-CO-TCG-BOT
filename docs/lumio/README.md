@@ -1,7 +1,9 @@
-# LUMIO *(nom provisoire — voir J5, recommandation NEXLUM)*
+# NEXLUM *(nom de travail retenu — dépôt INPI/EUIPO à lancer)*
 
 > Plateforme SaaS d'intégration IA souveraine pour les PME européennes.
 > **« AI that works. For every business. »**
+
+> **Note nom :** « LUMIO » a été **écarté** (conflit de marque avéré, cf. `J5`). Nom de travail retenu : **NEXLUM**, sous réserve de la recherche d'antériorité formelle INPI + EUIPO. Les fichiers J2-J4 antérieurs à la décision peuvent encore porter l'ancien nom provisoire « LUMIO » ; ils restent valides et seront harmonisés lors du passage au pitch deck visuel.
 
 Dossier stratégique & investisseur — sprint 7 jours. Tous les documents sont inter-référencés, chaque chiffre est sourcé, chaque faille est nommée et corrigée.
 

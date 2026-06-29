@@ -27,9 +27,9 @@
 | **OPERAI** | ❌ Dangereux | Quasi-homophone d'« OpenAI » → risque de confusion + opposition probable. |
 | **NEXLUM** | ✅ **Candidat viable** | Aucune présence significative identifiée. À confirmer INPI/EUIPO. |
 
-### Recommandation
+### Recommandation — ✅ DÉCISION PRISE : NEXLUM
 
-**Nom recommandé à valider : NEXLUM** (de *nexus* + *lumen* : le lien intelligent qui éclaire). À défaut, **coiner un nom neuf** parmi les pistes ci-dessous, plus sûres car inventées :
+**Nom retenu (décision fondateur, 2026-06-29) : NEXLUM** (de *nexus* + *lumen* : le lien intelligent qui éclaire), **sous réserve de la recherche d'antériorité formelle INPI + EUIPO** à lancer en semaine 1. À défaut (si conflit révélé au dépôt), bascule sous 48 h sur l'une des pistes coinées ci-dessous :
 
 | Piste coinée | Logique | À vérifier |
 |---|---|---|

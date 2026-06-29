@@ -98,4 +98,32 @@ J'avais noté en session 2 qu'il fallait « passer du document à l'outil utilis
 
 ---
 
+## 2026-06-29 — Session 4 (Décisions fondateur + plan d'exécution)
+
+### Décisions actées par le fondateur
+- ✅ **Nom retenu : NEXLUM** (LUMIO écarté pour conflit de marque). README + J5 mis à jour. Dépôt INPI/EUIPO à lancer en semaine 1.
+- ✅ **Bio fondateur** : modèle à remplir créé (`execution/04_modele_bio_fondateur.md`).
+- ✅ **Priorité suivante laissée à mon jugement** → j'ai tranché : le **plan d'action 90 jours orienté traction**, car c'est le seul levier qui débloque le readiness au-delà de 82.
+
+### Ce qui a été produit
+- `execution/04_modele_bio_fondateur.md` : gabarit bio + plan de réduction du risque « fondateur solo ».
+- `execution/05_plan_action_90_jours.md` : plan semaine par semaine (Valider → Vendre → Livrer), objectif 3 clients payants + pricing validé + marque déposée, tableau de bord hebdo.
+
+### Points positifs
+- Le projet a maintenant un **chemin d'exécution concret et daté**, pas seulement une stratégie.
+- Le plan relie chaque action au readiness (traction → 88, marque → +2, advisor → +3 ⇒ ~90/100).
+- Cohérence : NEXLUM acté, documents alignés.
+
+### Points négatifs / honnêteté
+- Le plan 90 jours **ne s'exécute pas tout seul** : il dépend entièrement de l'action terrain du fondateur. Mon rôle est désormais de copiloter, pas de produire à sa place.
+- **Readiness toujours 82/100** : il ne bougera qu'avec des résultats réels (1ᵉʳ client). Je continue de refuser de gonfler ce chiffre — c'est le cœur du mandat « pas le droit à l'erreur ».
+
+### Auto-amélioration
+- J'ai cessé d'empiler de la théorie et basculé vers l'actionnable (appels, prospection, bio, plan). C'est la bonne direction.
+- Prochaine valeur réelle = réagir aux **résultats du terrain** (retours d'appels, premiers refus/signatures) et ajuster le plan en conséquence. Je suis le plus utile en boucle courte avec l'exécution réelle, pas en générant plus de documents en amont.
+
+### Readiness du jour : **82 / 100** (stable — le plan est prêt ; l'aiguille bouge avec le 1ᵉʳ client)
+
+---
+
 <!-- Les entrées suivantes seront ajoutées ici, une par jour. -->
